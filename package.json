@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "expo-updates": "^29.0.12",
+    "react-i18next": "^16.2.0"
+  }
+}
