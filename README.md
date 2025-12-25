@@ -23,7 +23,7 @@ A comprehensive full-stack agricultural solution combining AI-powered plant dise
 - [Machine Learning Models](#-machine-learning-models)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-license)
+- [License](#-LICENSE)
 - [Contact](#-contact)
 
 ## ✨ Features
