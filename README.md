@@ -5,7 +5,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
 [![Express](https://img.shields.io/badge/Express-4.18+-000000.svg)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248.svg)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
+[![LICENSE](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
 
 A comprehensive full-stack agricultural solution combining AI-powered plant disease detection, crop yield prediction, and a complete farm management system with marketplace and community features.
 
