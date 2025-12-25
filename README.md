@@ -61,7 +61,7 @@ A comprehensive full-stack agricultural solution combining AI-powered plant dise
 <!-- ![Disease Detection Demo](docs/images/disease-detection-demo.gif) -->
 <!-- ![Dashboard Screenshot](docs/images/dashboard.png) -->
 
-> **Note**: Add screenshots/demos to `docs/images/` directory
+
 
 ## 🏗️ Architecture
 
