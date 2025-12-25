@@ -23,7 +23,7 @@ A comprehensive full-stack agricultural solution combining AI-powered plant dise
 - [Machine Learning Models](#-machine-learning-models)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-LICENSE)
+- [License](#-License)
 - [Contact](#-contact)
 
 ## ✨ Features
@@ -134,4 +134,9 @@ FYP/
 ├── README.md                       # This file
 └── LICENSE                         # License file
 
+## 📄 License
+
+This project is licensed under Academic License - see the [LICENSE](LICENSE) file for details.
+
+**Note**: This is an academic/educational project developed as a Final Year Project. 
 ```
