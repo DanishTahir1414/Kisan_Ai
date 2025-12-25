@@ -1,0 +1,303 @@
+{
+  "login": {
+    "title": "Login",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "login_button": "Login",
+    "logging_in": "Logging in...",
+    "not_a_user": "Not a user?",
+    "register_now": "Register Now!",
+    "error_fill_fields": "Please fill in all fields",
+    "error_valid_email": "Please enter a valid email address",
+    "success": "Login successful!",
+    "failed": "Login Failed",
+    "timeout_error": "Request timed out. Please check your connection and try again.",
+    "connection_error": "Cannot connect to server. Please check:",
+    "unexpected_error": "An unexpected error occurred",
+    "error": "Error",
+    "fill_all_fields": "Please fill in all fields",
+    "valid_email": "Please enter a valid email address"
+  },
+  "irrigation": {
+    "title": "Irrigation Scheduling",
+    "crop_type": "Crop Type: Wheat / Rice",
+    "next_schedule": "Next Irrigation Schedule",
+    "next_in": "Next irrigation in",
+    "due_now": "Irrigation due now!",
+    "type": "Type",
+    "alert": "Irrigation Alert",
+    "no_alert": "No alert available.",
+    "fetching_location": "Fetching location...",
+    "permission_denied": "Permission to access location was denied",
+    "current_weather": "Current Weather",
+    "temp": "Temp",
+    "wind": "Wind",
+    "refresh": "Refresh",
+    "get_alert": "Get Irrigation Alert",
+    "failed_fetch": "Failed to fetch alert.",
+    "auth_error": "User not authenticated. Please login."
+  },
+  "weather": {
+    "sunny": "Sunny",
+    "partly_cloudy": "Partly Cloudy",
+    "cloudy": "Cloudy",
+    "foggy": "Foggy",
+    "drizzle": "Drizzle",
+    "rainy": "Rainy",
+    "storm": "Storm",
+    "unknown": "Unknown",
+    "getting_data": "Getting weather data...",
+    "unable_to_load": "Unable to load weather data",
+    "retry": "Retry",
+    "my_location": "MY LOCATION",
+    "temperature": "Temperature",
+    "high_low": "H:{{high}}° L:{{low}}°",
+    "current_conditions": "{{description}}. Wind gusts are up to {{wind_speed}} km/h.",
+    "hourly_forecast": "Hourly Forecast",
+    "10_day_forecast": "10-DAY FORECAST",
+    "today": "Today",
+    "high": "High",
+    "low": "Low",
+    "wind_gusts": "Wind gusts",
+    "ten_day_forecast": "10-day forecast",
+    "visibility": "Visibility",
+    "humidity": "Humidity",
+    "feels_like": "Feels like",
+    "pressure": "Pressure"
+  },
+  "disease_suggestions": {
+    "yellow_curl": "1. Remove infected plants immediately to prevent spread\n2. Apply imidacloprid-based insecticide to control whiteflies\n3. Use reflective mulch to repel whiteflies\n4. Plant resistant varieties like Pusa Ruby or Arka Samrat\n\nPrevention: Control whitefly population, remove weeds, use sticky traps",
+    "late_blight": "1. Apply copper-based fungicide spray every 7-10 days\n2. Remove and destroy affected leaves and fruits\n3. Improve air circulation by proper spacing\n4. Avoid overhead watering, water at soil level\n\nPrevention: Use drip irrigation, apply preventive fungicide sprays",
+    "early_blight": "1. Spray with mancozeb or chlorothalonil fungicide\n2. Remove lower leaves touching the ground\n3. Apply mulch to prevent soil splash\n4. Ensure proper plant spacing for air circulation\n\nPrevention: Crop rotation, avoid overhead watering",
+    "bacterial_spot": "1. Apply copper-based bactericide sprays\n2. Remove and destroy infected plant parts\n3. Avoid working in wet conditions\n4. Use drip irrigation instead of sprinklers\n\nPrevention: Use certified disease-free seeds, practice crop rotation"
+  },
+  "home": {
+    "welcome_back": "Welcome Back, {{username}}",
+    "explore_message": "Explore the latest farming tips, connect with the community, or check out the marketplace!",
+    "your_diagnosed_crops": "Your Diagnosed Crops:",
+    "loading_diagnoses": "Loading diagnoses...",
+    "no_diagnoses_yet": "You haven't diagnoses any crop yet.",
+    "confidence_label": "Confidence",
+    "treatment_label": "Treatment",
+    "analysis_result_title": "Analysis Result",
+    "disease_diagnosis": "Disease Diagnosis",
+    "disease_label": "Disease",
+    "treatment_recommendation": "Treatment Recommendation"
+  },
+  "marketplace": {
+    "error_fetch_listings": "Failed to fetch listings",
+    "network_error": "Unable to fetch listings. Please try again.",
+    "permission_denied": "Please grant media library access to select an image.",
+    "error_fill_fields": "Please fill in all fields",
+    "error_valid_phone": "Please enter a valid Pakistani phone number (e.g., +923001234567 or 03001234567)",
+    "error_valid_price": "Please enter a valid price greater than 0",
+    "auth_error": "Please login to create a listing",
+    "success_create": "Listing created successfully!",
+    "error_create": "Failed to create listing",
+    "network_error_create": "Unable to create listing. Please try again."
+  },
+  "profile": {
+    "success": "Success",
+    "profile_updated": "Profile updated successfully",
+    "update_failed": "Update Failed",
+    "timeout_error": "Timeout Error",
+    "timeout_message": "Request timed out. Please check your connection and try again.",
+    "connection_error": "Connection Error",
+    "connection_message": "Cannot connect to server. Please check your connection.",
+    "error": "Error",
+    "unexpected_error": "An unexpected error occurred",
+    "view_update_info": "View and update your personal information",
+    "change_picture": "Change Profile Picture",
+    "upload_picture": "Upload Profile Picture",
+    "full_name": "Full Name",
+    "enter_full_name": "Enter your full name",
+    "email": "Email",
+    "enter_email": "Enter your email",
+    "phone_number": "Phone Number",
+    "enter_phone_number": "Enter your phone number",
+    "city": "City",
+    "enter_city": "Enter your city",
+    "new_password": "New Password (optional)",
+    "enter_new_password": "Enter new password",
+    "confirm_password": "Confirm New Password",
+    "confirm_new_password": "Confirm new password",
+    "confirm_new_password_placeholder": "Confirm your new password",
+    "updating": "Updating...",
+    "save_changes": "Save Changes",
+    "edit_profile": "Edit Profile",
+    "cancel": "Cancel",
+    "loading_user_data": "Loading user data...",
+    "select_language": "Select Language",
+    "language_english": "English",
+    "language_urdu": "Urdu",
+    "tab": {
+      "profile": "Profile"
+    }
+  },
+  "community": {
+    "error": "Error",
+    "failed_fetch_posts": "Failed to fetch posts",
+    "network_error": "Network Error",
+    "unable_fetch_posts": "Unable to fetch posts. Please try again."
+  },
+  "camera": {
+    "success": "Success",
+    "diagnosis_saved": "Diagnosis and cure suggestion saved successfully",
+    "error_saving_diagnosis": "Error Saving Diagnosis",
+    "failed_save_diagnosis": "Failed to save diagnosis to database",
+    "analyzing_image": "Analyzing image...",
+    "getting_cure_suggestion": "Getting cure suggestion...",
+    "unable_to_get_cure": "Unable to get cure suggestion at this time. Please try again later.",
+    "network_error_cure": "Network error while getting cure suggestion. Please check your connection.",
+    "login_to_diagnose": "Please log in to diagnose crop",
+    "invalid_crop": "Invalid crop selected",
+    "invalid_response": "Invalid response format from server",
+    "no_diagnosis": "No diagnosis available",
+    "failed_to_diagnose": "Failed to diagnose {{crop}} crop",
+    "cannot_reach_server": "Cannot reach server. Check your network or server address.",
+    "select_crop_first": "Please select a crop first",
+    "permission_needed": "We need your permission to show the camera",
+    "grant_permission": "Grant Permission",
+    "instruction": "Select a crop to analyze. Ensure good lighting and focus for accurate results.",
+    "processing_image": "Processing image...",
+    "analysis_result_for": "Analysis Result for {{crop}}",
+    "speech_error": "Speech synthesis failed",
+    "speech_not_available": "Text-to-speech not available",
+    "speak_all": "Speak All",
+    "stop_speech": "Stop Speech",
+    "diagnosis_result": "Diagnosis Result"
+  },
+  "signup": {
+    "permission_denied": "Permission Denied",
+    "camera_access_needed": "Camera roll access is needed to upload profile picture.",
+    "error": "Error",
+    "fill_all_fields": "Please fill in all fields including profile picture",
+    "valid_email": "Please enter a valid email address",
+    "password_length": "Password must be at least 6 characters",
+    "passwords_mismatch": "Passwords don't match",
+    "success": "Success",
+    "account_created": "Account created successfully! Please login.",
+    "signup_failed": "Signup Failed",
+    "timeout_error": "Timeout Error",
+    "timeout_message": "Request timed out. Please try again.",
+    "unexpected_error": "An unexpected error occurred",
+    "register_now": "Register Now!"
+  },
+  "crop_yield_prediction": {
+    "enter_field": "Please enter {{field_name}}",
+    "field_must_be_number": "{{field_name}} must be a number"
+  },
+  "toast": {
+    "permission_denied": "Permission denied.",
+    "location_permission_required": "Location permission is required.",
+    "error": "Error occurred.",
+    "location_error": "Unable to fetch location.",
+    "fetch_error": "Unable to fetch data."
+  },
+  "tabNames": {
+    "home": "Home",
+    "community": "Community",
+    "marketplace": "Marketplace",
+    "cropDiagnosis": "Crop Diagnosis",
+    "weather": "Weather",
+    "profile": "Profile"
+  },
+  "cropYield": {
+    "title": "Crop Yield Prediction",
+    "fields": {
+      "Year": "Year",
+      "Area_harvested": "Area harvested",
+      "Avg_Temp_ANN": "Average Annual Temperature",
+      "Aqua_Water_Metric": "Aqua Water Metric",
+      "CropType_encoded": "Crop Type",
+      "key": "Field Key"
+    },
+    "placeholders": {
+      "enterField": "Enter {{field}}"
+    },
+    "errors": {
+      "enterField": "Please enter {{field}}",
+      "mustBeNumber": "{{field}} must be a number"
+    },
+    "buttons": {
+      "predictYield": "Predict Yield"
+    },
+    "results": {
+      "predictedCropYield": "Predicted Crop Yield"
+    }
+  },
+  "loading": {
+    "getting_weather_data": "Getting weather data..."
+  },
+  "error": {
+    "unable_to_load_weather_data": "Unable to load weather data",
+    "retry": "Retry",
+    "generic": "An error occurred",
+    "timeout": "Timeout",
+    "requestTimedOut": "Request timed out",
+    "network": "Network error",
+    "cannotConnect": "Cannot connect",
+    "unableToCreatePost": "Unable to create post",
+    "failedToLogout": "Failed to logout"
+  },
+  "permissions": {
+    "denied": "Permission denied",
+    "grantMediaLibraryAccess": "Grant media library access"
+  },
+  "post": {
+    "required": "Post required",
+    "enterText": "Enter text",
+    "created": "Post created",
+    "successMessage": "Post created successfully",
+    "createPost": "Create Post",
+    "whatsOnYourMind": "What's on your mind?",
+    "addImage": "Add Image",
+    "posting": "Posting...",
+    "post": "Post"
+  },
+  "auth": {
+    "error": "Authentication error",
+    "loginToCreatePost": "Login to create a post"
+  },
+  "logout": {
+    "title": "Logout",
+    "message": "Are you sure you want to logout?",
+    "success": "Logout successful",
+    "loggedOutMessage": "You have been logged out",
+    "loggedOut": "Logged out"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "noAlerts": "No alerts"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "diseases": {
+    "bacterial_spot": "Bacterial Spot",
+    "early_blight": "Early Blight",
+    "late_blight": "Late Blight",
+    "leaf_mold": "Leaf Mold",
+    "septoria_leaf_spot": "Septoria Leaf Spot",
+    "spider_mites_two-spotted_spider_mite": "Spider Mites (Two-spotted spider mite)",
+    "target_spot": "Target Spot",
+    "tomato_yellow_leaf_curl_virus": "Tomato Yellow Leaf Curl Virus",
+    "tomato_mosaic_virus": "Tomato Mosaic Virus",
+    "healthy": "Healthy"
+  },
+  "crops": {
+    "rice": "Rice",
+    "cotton": "Cotton",
+    "mango": "Mango",
+    "guava": "Guava",
+    "tomato": "Tomato"
+  }
+  
+  }
