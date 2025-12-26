@@ -5,7 +5,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
 [![Express](https://img.shields.io/badge/Express-4.18+-000000.svg)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248.svg)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
+[![LICENSE](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
 
 A comprehensive full-stack agricultural solution combining AI-powered plant disease detection, crop yield prediction, and a complete farm management system with marketplace and community features.
 
@@ -23,7 +23,7 @@ A comprehensive full-stack agricultural solution combining AI-powered plant dise
 - [Machine Learning Models](#-machine-learning-models)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-license)
+- [License](#-License)
 - [Contact](#-contact)
 
 ## ✨ Features
@@ -61,7 +61,7 @@ A comprehensive full-stack agricultural solution combining AI-powered plant dise
 <!-- ![Disease Detection Demo](docs/images/disease-detection-demo.gif) -->
 <!-- ![Dashboard Screenshot](docs/images/dashboard.png) -->
 
-> **Note**: Add screenshots/demos to `docs/images/` directory
+
 
 ## 🏗️ Architecture
 
@@ -135,3 +135,8 @@ FYP/
 └── LICENSE                         # License file
 
 ```
+## 📄 License
+
+This project is licensed under Academic License - see the [LICENSE](LICENSE) file for details.
+
+**Note**: This is an academic/educational project developed as a Final Year Project. 
