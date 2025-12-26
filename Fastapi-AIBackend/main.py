@@ -718,10 +718,29 @@ def create_cure_prompt(plant_type: str, disease: str, confidence: float, languag
     
     confidence_level = "high" if confidence > 0.8 else "moderate" if confidence > 0.6 else "low"
     
-    # Simple prompt with language support, no markdown
-    prompt = f"""You are an agricultural expert. Provide treatment for {plant_type} plant disease: {disease}
+    # Enhanced prompt with strict Urdu script enforcement
+    if language == "ur":
+        prompt = f"""You are an agricultural expert. Provide treatment for {plant_type} plant disease: {disease}
 
-IMPORTANT: Respond in {"Urdu" if language == "ur" else "English"} language only.
+CRITICAL INSTRUCTION: You MUST respond ONLY in Urdu script (اردو رسم الخط).
+DO NOT use Roman Urdu or English transliteration.
+DO NOT use Latin alphabet for Urdu words.
+WRITE EVERYTHING in Urdu Nastaliq script (ناستعلیق).
+Do NOT use any markdown symbols like *, #, _, or other formatting.
+Use plain Urdu text only.
+
+علاج کی تفصیل دیں 3 حصوں میں:
+1. فوری علاج (2-3 اقدامات)
+2. احتیاطی تدابیر (1-2 نکات)
+3. ماہر سے رجوع کب کریں
+
+جواب 200 الفاظ سے کم ہو۔ آسان اردو استعمال کریں۔
+
+علاج:"""
+    else:
+        prompt = f"""You are an agricultural expert. Provide treatment for {plant_type} plant disease: {disease}
+
+IMPORTANT: Respond in English language only.
 Do NOT use any markdown symbols like *, #, _, or other formatting.
 Use plain text only.
 

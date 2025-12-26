@@ -165,7 +165,9 @@
     "speech_not_available": "Text-to-speech not available",
     "speak_all": "Speak All",
     "stop_speech": "Stop Speech",
-    "diagnosis_result": "Diagnosis Result"
+    "diagnosis_result": "Diagnosis Result",
+    "loading_speech": "Loading speech...",
+    "login_to_use_tts": "Please log in to use text-to-speech"
   },
   "signup": {
     "permission_denied": "Permission Denied",

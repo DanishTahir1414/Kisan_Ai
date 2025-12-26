@@ -22,7 +22,8 @@ import {
 import Toast from "react-native-toast-message";
 import { useTranslation } from "react-i18next";
 import { CustomText, Heading } from "../components/customText";
-import * as Speech from 'expo-speech'; // Add this import for Text to Speech
+import { Audio } from 'expo-av';
+import * as FileSystem from 'expo-file-system/legacy';
 
 // API Configuration
 // Change this to your computer's IP address for mobile testing
@@ -49,12 +50,9 @@ const Camera = () => {
   const [cureResponse, setCureResponse] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStage, setLoadingStage] = useState<string>("");
-  const [isSpeaking, setIsSpeaking] = useState(false); // Add speaking state
-  const [speechOptions, setSpeechOptions] = useState({
-    language: 'en-US', // Default language
-    pitch: 1.0,
-    rate: 0.8,
-  });
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isSpeechLoading, setIsSpeechLoading] = useState(false);
+  const soundObjectRef = useRef<Audio.Sound | null>(null);
   const cameraRef = useRef<CameraView>(null);
 
   const getAuthToken = async (): Promise<string | null> => {
@@ -410,67 +408,106 @@ const Camera = () => {
     }, [])
   );
 
-  // Add Text to Speech functions
-  const updateSpeechLanguage = () => {
-    const currentLang = i18n.language;
-    setSpeechOptions(prev => ({
-      ...prev,
-      language: currentLang === 'ur' ? 'ur-PK' : 'en-US' // Urdu Pakistan or English US
-    }));
-  };
-
+  // Azure TTS via Backend
   const speakText = async (text: string) => {
     try {
-      // Stop any ongoing speech
-      if (isSpeaking) {
-        Speech.stop();
-        setIsSpeaking(false);
+      // If already loading or speaking, stop
+      if (isSpeechLoading || isSpeaking) {
+        await stopSpeech();
         return;
       }
 
-      setIsSpeaking(true);
+      setIsSpeechLoading(true);
       
-      // Simple text cleaning - let TTS handle numbers naturally
+      // Clean text (preserve existing logic)
       const cleanText = text
         .replace(/[#*_`]/g, '') // Remove markdown symbols only
         .replace(/\n+/g, '. ') // Replace newlines with pauses
         .replace(/:/g, '. ') // Replace colons with pauses
         .replace(/([A-Za-z]+_[A-Za-z_]+)/g, (match) => {
-          // Clean disease names with underscores
           return match.replace(/_/g, ' ');
         })
-        .replace(/\s+/g, ' ') // Multiple spaces to single space
+        .replace(/\s+/g, ' ')
         .trim();
 
-      const currentLanguage = i18n.language === 'ur' ? 'ur-PK' : 'en-US';
-      
       console.log('Original text:', text);
       console.log('Cleaned text for speech:', cleanText);
-      
-      await Speech.speak(cleanText, {
-        language: currentLanguage,
-        pitch: speechOptions.pitch,
-        rate: speechOptions.rate, // Use normal rate for both languages
-        onStart: () => setIsSpeaking(true),
-        onDone: () => setIsSpeaking(false),
-        onStopped: () => setIsSpeaking(false),
-        onError: (error) => {
-          console.log('Speech error:', error);
-          setIsSpeaking(false);
-          Toast.show({
-            type: "error",
-            text1: t('common.error'),
-            text2: t('camera.speech_error'),
-          });
-        }
+
+      // Get auth token
+      const token = await getAuthToken();
+      if (!token) {
+        Toast.show({
+          type: "error",
+          text1: t('auth.error'),
+          text2: t('camera.login_to_use_tts'),
+        });
+        setIsSpeechLoading(false);
+        return;
+      }
+
+      // Request audio from backend
+      const response = await fetch(`${API_BASE_URL}/tts/speak`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: cleanText,
+          language: i18n.language === 'ur' ? 'ur' : 'en',
+        }),
       });
-    } catch (error) {
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to generate speech');
+      }
+
+      const data = await response.json();
+      
+      if (!data.success || !data.audio) {
+        throw new Error('Invalid response from speech service');
+      }
+
+      // Save Base64 audio to file
+      const audioUri = `${FileSystem.cacheDirectory}speech.mp3`;
+      await FileSystem.writeAsStringAsync(audioUri, data.audio, {
+        encoding: 'base64',
+      });
+
+      // Unload previous sound if exists
+      if (soundObjectRef.current) {
+        await soundObjectRef.current.unloadAsync();
+        soundObjectRef.current = null;
+      }
+
+      // Load and play audio
+      const { sound } = await Audio.Sound.createAsync(
+        { uri: audioUri },
+        { shouldPlay: true },
+        (status) => {
+          if (status.isLoaded) {
+            if (status.didJustFinish) {
+              setIsSpeaking(false);
+              sound.unloadAsync();
+              soundObjectRef.current = null;
+            }
+          }
+        }
+      );
+
+      soundObjectRef.current = sound;
+      setIsSpeaking(true);
+      setIsSpeechLoading(false);
+
+    } catch (error: any) {
       console.error('Text to speech error:', error);
       setIsSpeaking(false);
+      setIsSpeechLoading(false);
       Toast.show({
         type: "error",
         text1: t('common.error'),
-        text2: t('camera.speech_not_available'),
+        text2: error.message || t('camera.speech_not_available'),
       });
     }
   };
@@ -489,15 +526,32 @@ const Camera = () => {
     }
   };
 
-  const stopSpeech = () => {
-    Speech.stop();
-    setIsSpeaking(false);
+  const stopSpeech = async () => {
+    try {
+      if (soundObjectRef.current) {
+        await soundObjectRef.current.stopAsync();
+        await soundObjectRef.current.unloadAsync();
+        soundObjectRef.current = null;
+      }
+      setIsSpeaking(false);
+      setIsSpeechLoading(false);
+    } catch (error) {
+      console.error('Error stopping speech:', error);
+      setIsSpeaking(false);
+      setIsSpeechLoading(false);
+    }
   };
 
-  // Update speech language when app language changes
+  // Cleanup sound on unmount
   React.useEffect(() => {
-    updateSpeechLanguage();
-  }, [i18n.language]);
+    return () => {
+      if (soundObjectRef.current) {
+        soundObjectRef.current.unloadAsync();
+      }
+    };
+  }, []);
+
+
 
   if (!permission) {
     return (
@@ -642,13 +696,17 @@ const Camera = () => {
                       <TouchableOpacity
                         style={styles.speakButton}
                         onPress={speakDiagnosisResult}
-                        disabled={!diagnosisResponse}
+                        disabled={!diagnosisResponse || isSpeechLoading}
                       >
-                        <Ionicons 
-                          name={isSpeaking ? "stop" : "volume-high"} 
-                          size={16} 
-                          color="#039116" 
-                        />
+                        {isSpeechLoading ? (
+                          <ActivityIndicator size="small" color="#039116" />
+                        ) : (
+                          <Ionicons 
+                            name={isSpeaking ? "stop" : "volume-high"} 
+                            size={16} 
+                            color="#039116" 
+                          />
+                        )}
                       </TouchableOpacity>
                     </View>
                     <CustomText style={styles.diagnosisText}>
@@ -664,13 +722,17 @@ const Camera = () => {
                         <TouchableOpacity
                           style={styles.speakButton}
                           onPress={speakCureSuggestion}
-                          disabled={!cureResponse}
+                          disabled={!cureResponse || isSpeechLoading}
                         >
-                          <Ionicons 
-                            name={isSpeaking ? "stop" : "volume-high"} 
-                            size={16} 
-                            color="#039116" 
-                          />
+                          {isSpeechLoading ? (
+                            <ActivityIndicator size="small" color="#039116" />
+                          ) : (
+                            <Ionicons 
+                              name={isSpeaking ? "stop" : "volume-high"} 
+                              size={16} 
+                              color="#039116" 
+                            />
+                          )}
                         </TouchableOpacity>
                       </View>
                       <ScrollView 
@@ -687,30 +749,6 @@ const Camera = () => {
                 </>
               )}
             </ScrollView>
-            <View style={styles.speechControlsContainer}>
-              {(diagnosisResponse || cureResponse) && (
-                <TouchableOpacity
-                  style={[styles.speechControlButton, isSpeaking && styles.speechControlButtonActive]}
-                  onPress={() => {
-                    if (isSpeaking) {
-                      stopSpeech();
-                    } else {
-                      const fullText = `${diagnosisResponse ? t('camera.diagnosis_result') + ': ' + diagnosisResponse + '. ' : ''}${cureResponse ? t('home.treatment_recommendation') + ': ' + cureResponse : ''}`;
-                      speakText(fullText);
-                    }
-                  }}
-                >
-                  <Ionicons 
-                    name={isSpeaking ? "stop" : "play"} 
-                    size={20} 
-                    color="#fff" 
-                  />
-                  <CustomText style={styles.speechControlButtonText}>
-                    {isSpeaking ? t('camera.stop_speech') : t('camera.speak_all')}
-                  </CustomText>
-                </TouchableOpacity>
-              )}
-            </View>
             <TouchableOpacity
               style={styles.closeButton}
               onPress={() => {

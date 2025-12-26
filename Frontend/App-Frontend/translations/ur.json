@@ -168,7 +168,9 @@
     "speech_not_available": "آواز میں تبدیلی دستیاب نہیں",
     "speak_all": "سب کچھ سنیں",
     "stop_speech": "آواز بند کریں",
-    "diagnosis_result": "تشخیص کا نتیجہ"
+    "diagnosis_result": "تشخیص کا نتیجہ",
+    "loading_speech": "آواز لوڈ ہو رہی ہے...",
+    "login_to_use_tts": "ٹیکسٹ ٹو اسپیچ استعمال کرنے کے لیے لاگ ان کریں"
   },
   "signup": {
     "permission_denied": "اجازت مسترد کر دی گئی",
